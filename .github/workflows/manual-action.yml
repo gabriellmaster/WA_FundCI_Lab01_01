@@ -1,0 +1,23 @@
+name: Exercício 01 - Action Manual
+
+on:
+  workflow_dispatch:
+    inputs:
+      mensagem:
+        description: 'Mensagem personalizada para exibir no log'
+        required: false
+        default: 'Executando workflow manual no GitHub Actions!'
+
+jobs:
+  execucao-manual:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Exibir mensagem de ativação manual
+        run: |
+          echo "Olá! Este workflow foi disparado manualmente."
+          echo "Mensagem: ${{ inputs.mensagem }}"
+          echo "Data/Hora do runner: $(date)"
